@@ -34,18 +34,19 @@ namespace DatingApp.API.Controllers
                 return BadRequest("Username exists. Sorry!");
             }
 
-            var useerToCreate = new User
+            var userToCreate = new User
             {
                 Username = userForRegisterDto.Username
             };
 
-            var createdUser = await _repo.Register(useerToCreate, userForRegisterDto.Password);
+            var createdUser = await _repo.Register(userToCreate, userForRegisterDto.Password);
             return StatusCode(201);
         }
 
         [HttpPost("login")]
         public async Task<IActionResult> Login(UserForLoginDto userForLoginDto)
         {
+            
             var userFromRepo = await _repo.Login(userForLoginDto.Username.ToUpper(), userForLoginDto.Password);
             if (userFromRepo == null)
             {

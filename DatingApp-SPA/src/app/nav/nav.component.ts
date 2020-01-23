@@ -18,16 +18,16 @@ model: any = {};
       console.log(this.model);
       console.log('Successful log in');
     }, error => {
-      console.log('Failed Login');
+      console.log(error);
     });
   }
 
-  loggedIn(){
+  loggedIn() {
     const token = localStorage.getItem('token');
     return !!token;
   }
 
-  logout(){
+  logout() {
     localStorage.removeItem('token');
     console.log('Logged Out');
   }
